@@ -33,3 +33,7 @@ export const getTwittes = () => TwitteModel.find();
 export const getTwittesByUserId = (user_id: string) =>
   TwitteModel.find({ user_id: user_id });
 export const getTwitteById = (id: string) => TwitteModel.findById(id);
+
+export const createTwitte = (values: Record<string, any>) => new TwitteModel(values);
+export const updateTwitteById = (id: string, values: Record<string, any>) => TwitteModel.findByIdAndUpdate(id, values);
+export const deleteTwitteById = (id: string) => TwitteModel.findByIdAndDelete(id);

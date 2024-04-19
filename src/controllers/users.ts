@@ -37,8 +37,8 @@ export const deleteUser = async (req: express.Request, res: express.Response) =>
   try {
     const { id } = req.params;
     const deletedUser = await deleteUserById(id);
-    res.status(200).json({ message: 'User deleted successfully' });
+    return res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }

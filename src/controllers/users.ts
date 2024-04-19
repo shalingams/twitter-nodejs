@@ -6,9 +6,9 @@ import { get } from 'lodash';
 export const getAllUsers = async (req: express.Request, res: express.Response) => {
   try {
     const users = await getUsers();
-    res.status(200).json(users);
+    return res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 

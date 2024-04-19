@@ -8,6 +8,17 @@ import {
 } from "../db/twitte";
 import express from "express";
 
+export const deleteTwitte = async (req: express.Request, res: express.Response) => {
+  try {
+    const { id } = req.params;
+    await deleteTwitteById(id);
+    return res.status(200).json({ message: "Record deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: error.message });
+  }
+}
+
 export const updateTwitte = async (req: express.Request, res: express.Response) => {
   try {
     const { id } = req.params;

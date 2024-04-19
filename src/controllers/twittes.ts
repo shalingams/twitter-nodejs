@@ -1,5 +1,24 @@
-import { getTwittes, createTwitte } from "../db/twitte";
+import {
+  getTwittes,
+  createTwitte,
+  getTwittesByUserId,
+  getTwitteById,
+  updateTwitteById,
+  deleteTwitteById,
+} from "../db/twitte";
 import express from "express";
+
+export const getTwittesByUser = async (req: express.Request, res: express.Response) => {
+  try {
+    const { user_id } = req.params;
+    const twittes = await getTwittesByUserId(user_id);
+    return res.status(200).json(twittes);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: error.message });
+    
+  }
+}
 
 export const getAllTwittes = async (
   req: express.Request,

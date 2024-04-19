@@ -8,6 +8,17 @@ import {
 } from "../db/twitte";
 import express from "express";
 
+export const getTwitte = async (req: express.Request, res: express.Response) => {
+  try {
+    const { id } = req.params;
+    const twitte = await getTwitteById(id);
+    return res.status(200).json(twitte);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: error.message });
+  }
+}
+
 export const getTwittesByUser = async (req: express.Request, res: express.Response) => {
   try {
     const { user_id } = req.params;
